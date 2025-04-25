@@ -1506,7 +1506,6 @@ elif page == "Model Information":
                                  <div class='card glass-effect' style='text-align: center;'>
                                      <h3 style='margin: 0; color: {colors['accent_1']}'>{model_name.replace('_', ' ').title()}</h3>
                                      <p style='margin: 5px 0; color: {colors['text_secondary']}; font-size: 0.9em;'>Status: Loaded</p>
-                                     {'' # Placeholder for future metrics like accuracy/latency from API}
                                  </div>
                              """, unsafe_allow_html=True)
                 else:
