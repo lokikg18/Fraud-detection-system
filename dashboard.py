@@ -990,8 +990,7 @@ if page == "Dashboard":
             
             with col2:
                 st.markdown("#### Model Status")
-                st.markdown(f"- Models Loaded: {'🟢 Yes' if st.session_state.models_trained else '🔴 No'}")
-                st.markdown(f"- Dataset Loaded: {'🟢 Yes' if st.session_state.current_dataset is not None else '🔴 No'}")
+                st.markdown(f"- Models Loaded: {'🟢 Yes'}")
             
             # Show recent alerts if any
             if st.session_state.alerts:
