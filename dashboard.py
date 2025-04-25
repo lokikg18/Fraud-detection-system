@@ -998,15 +998,17 @@ if page == "Dashboard":
             with col1_details:
                  st.markdown(f"<div class='card'>", unsafe_allow_html=True)
                  st.markdown("#### API Status")
-                 st.markdown(f"- Flask API: {'<span class=\"status-indicator status-active\"></span> Online' if api_status.get('flask', False) else '<span class=\"status-indicator status-inactive\"></span> Offline'}", unsafe_allow_html=True)
-                 st.markdown(f"- FastAPI: {'<span class=\"status-indicator status-active\"></span> Online' if api_status.get('fastapi', False) else '<span class=\"status-indicator status-inactive\"></span> Offline'}", unsafe_allow_html=True)
+                 # FIX: Use single quotes for HTML class attribute
+                 st.markdown(f"- Flask API: {'<span class=\'status-indicator status-active\'></span> Online' if api_status.get('flask', False) else '<span class=\'status-indicator status-inactive\'></span> Offline'}", unsafe_allow_html=True)
+                 st.markdown(f"- FastAPI: {'<span class=\'status-indicator status-active\'></span> Online' if api_status.get('fastapi', False) else '<span class=\'status-indicator status-inactive\'></span> Offline'}", unsafe_allow_html=True)
                  st.markdown(f"</div>", unsafe_allow_html=True)
 
 
             with col2_details:
                  st.markdown(f"<div class='card'>", unsafe_allow_html=True)
                  st.markdown("#### Model Status")
-                 st.markdown(f"- Models Loaded: {'<span class=\"status-indicator status-active\"></span> Yes' if st.session_state.get('models_trained', False) else '<span class=\"status-indicator status-inactive\"></span> No'}", unsafe_allow_html=True)
+                 # FIX: Use single quotes for HTML class attribute
+                 st.markdown(f"- Models Loaded: {'<span class=\'status-indicator status-active\'></span> Yes' if st.session_state.get('models_trained', False) else '<span class=\'status-indicator status-inactive\'></span> No'}", unsafe_allow_html=True)
                  # Add more details if available from API status check
                  st.markdown(f"</div>", unsafe_allow_html=True)
 
