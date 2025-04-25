@@ -998,17 +998,30 @@ if page == "Dashboard":
             with col1_details:
                  st.markdown(f"<div class='card'>", unsafe_allow_html=True)
                  st.markdown("#### API Status")
-                 # FIX: Use single quotes for HTML class attribute
-                 st.markdown(f"- Flask API: {'<span class=\'status-indicator status-active\'></span> Online' if api_status.get('flask', False) else '<span class=\'status-indicator status-inactive\'></span> Offline'}", unsafe_allow_html=True)
-                 st.markdown(f"- FastAPI: {'<span class=\'status-indicator status-active\'></span> Online' if api_status.get('fastapi', False) else '<span class=\'status-indicator status-inactive\'></span> Offline'}", unsafe_allow_html=True)
+                 # --- FIX START ---
+                 # Construct HTML strings outside the f-string expression
+                 online_html = "<span class='status-indicator status-active'></span> Online"
+                 offline_html = "<span class='status-indicator status-inactive'></span> Offline"
+                 flask_status_html = online_html if api_status.get('flask', False) else offline_html
+                 fastapi_status_html = online_html if api_status.get('fastapi', False) else offline_html
+
+                 st.markdown(f"- Flask API: {flask_status_html}", unsafe_allow_html=True)
+                 st.markdown(f"- FastAPI: {fastapi_status_html}", unsafe_allow_html=True)
+                 # --- FIX END ---
                  st.markdown(f"</div>", unsafe_allow_html=True)
 
 
             with col2_details:
                  st.markdown(f"<div class='card'>", unsafe_allow_html=True)
                  st.markdown("#### Model Status")
-                 # FIX: Use single quotes for HTML class attribute
-                 st.markdown(f"- Models Loaded: {'<span class=\'status-indicator status-active\'></span> Yes' if st.session_state.get('models_trained', False) else '<span class=\'status-indicator status-inactive\'></span> No'}", unsafe_allow_html=True)
+                 # --- FIX START ---
+                 # Construct HTML strings outside the f-string expression
+                 yes_html = "<span class='status-indicator status-active'></span> Yes"
+                 no_html = "<span class='status-indicator status-inactive'></span> No"
+                 model_loaded_html = yes_html if st.session_state.get('models_trained', False) else no_html
+
+                 st.markdown(f"- Models Loaded: {model_loaded_html}", unsafe_allow_html=True)
+                 # --- FIX END ---
                  # Add more details if available from API status check
                  st.markdown(f"</div>", unsafe_allow_html=True)
 
@@ -1682,4 +1695,3 @@ try:
     """, unsafe_allow_html=True)
 except Exception as e:
     logger.error(f"Error in footer: {e}")
-
