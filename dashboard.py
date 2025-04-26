@@ -28,8 +28,8 @@ import concurrent.futures
 
 # --- OR --- (Less Recommended for deployment, okay for local testing)
 # Hardcode your URLs here if not using secrets (Replace placeholders)
-FLASK_API_URL = "https://flask-service-585685547792.asia-south1.run.app"  # <--- REPLACE WITH YOUR ACTUAL FLASK URL
-FASTAPI_API_URL = "https://fastapi-service-585685547792.asia-south1.run.app" # <--- REPLACE WITH YOUR ACTUAL FASTAPI URL
+FLASK_API_URL = os.environ.get("FLASK_API_URL")  # Provide a default for local testing if needed
+FASTAPI_API_URL = os.environ.get("FASTAPI_API_URL") # Provide a default
 
 # Ensure URLs don't end with a slash
 FLASK_API_URL = FLASK_API_URL.rstrip('/')
